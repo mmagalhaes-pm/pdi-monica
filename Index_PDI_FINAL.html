@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDI — Monica Magalhães</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+  :root {
+    --bg:        #0d0d0f;
+    --surface:   #15151a;
+    --border:    #2a2a35;
+    --accent:    #00c896;
+    --accent2:   #7c5cfc;
+    --text:      #e8e8f0;
+    --muted:     #6b6b80;
+    --danger:    #ff5c5c;
+    --warn:      #f5a623;
+    --tag-bg:    rgba(0,200,150,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,13,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 56px;
+    gap: 16px;
+  }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .topbar-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: var(--accent);
+  }
+
+  .topbar-sep { color: var(--border); }
+
+  .topbar-title {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .badge-period {
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--tag-bg);
+    color: var(--accent);
+    border: 1px solid rgba(0,200,150,0.25);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-deploy {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: #0d0d0f;
+    font-weight: 700;
+    font-size: 12px;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 14px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: opacity 0.15s;
+  }
+
+  .btn-deploy:hover { opacity: 0.85; }
+  .btn-deploy:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 48px 100px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 72px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 span {
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .meta-chip {
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ── NAV ── */
+  .nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-pill {
+    font-size: 12px;
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .nav-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── SEÇÕES ── */
+  .section {
+    margin-bottom: 72px;
+    scroll-margin-top: 72px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 16px;
+  }
+
+  .section-title-group {}
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  .btn-comment-toggle {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 600;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-comment-toggle:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  .section-body {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 40px;
+  }
+
+  .section-body p {
+    color: #c8c8d8;
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* ── PILARES ── */
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .pilar-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pilar-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .pilar-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .pilar-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .pilar-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── METAS ── */
+  .metas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .meta-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .meta-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+
+  .meta-content {}
+
+  .meta-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .meta-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .meta-prazo {
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(124,92,252,0.1);
+    color: var(--accent2);
+    border: 1px solid rgba(124,92,252,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── CRONOGRAMA ── */
+  .semanas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .semana-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+
+  .semana-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+
+  .semana-entrega {
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .semana-pilar {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .pilar-tag-1 { border-color: rgba(0,200,150,0.3); color: var(--accent); }
+  .pilar-tag-2 { border-color: rgba(124,92,252,0.3); color: var(--accent2); }
+  .pilar-tag-3 { border-color: rgba(245,166,35,0.3); color: var(--warn); }
+  .pilar-tag-4 { border-color: rgba(232,232,240,0.3); color: var(--text); }
+
+  .mes-header {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 0 6px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  .mes-header:first-child { margin-top: 0; }
+
+  /* ── RECURSOS ── */
+  .recursos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .recurso-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+
+  .recurso-tipo {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .recurso-nome {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .recurso-detalhe {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── COMENTÁRIOS ── */
+  .comments-area {
+    display: none;
+    margin-top: 16px;
+    background: rgba(124,92,252,0.05);
+    border: 1px solid rgba(124,92,252,0.2);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .comments-area.open { display: block; }
+
+  .comments-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .comment-form input,
+  .comment-form textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    border-radius: 6px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.15s;
+    resize: vertical;
+  }
+
+  .comment-form input:focus,
+  .comment-form textarea:focus {
+    border-color: var(--accent2);
+  }
+
+  .comment-form input::placeholder,
+  .comment-form textarea::placeholder {
+    color: var(--muted);
+  }
+
+  .btn-enviar {
+    align-self: flex-end;
+    background: var(--accent2);
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .btn-enviar:hover { opacity: 0.85; }
+  .btn-enviar:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .comment-bubble {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  .comment-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .comment-autor {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+
+  .comment-data {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .comment-texto {
+    font-size: 13px;
+    color: #c8c8d8;
+    line-height: 1.5;
+  }
+
+  .no-comments {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.25s;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .toast.error {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+
+  /* ── DIVISOR ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .meta-item { grid-template-columns: 32px 1fr; }
+    .meta-prazo { grid-column: 2; }
+    .semana-item { grid-template-columns: 60px 1fr; }
+    .semana-pilar { display: none; }
+    .topbar { padding: 0 16px; }
+    .container { padding: 32px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-logo">PDI</span>
+    <span class="topbar-sep">·</span>
+    <span class="topbar-title">Monica Magalhães</span>
+  </div>
+  <div class="topbar-right">
+    <span class="badge-period">Jul – Set 2026</span>
+    <button class="btn-deploy" id="btnDeploy" onclick="confirmarAtualizacao()">
+      ↻ Atualizar
+    </button>
+  </div>
+</div>
+
+<!-- CONTAINER -->
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Plano de Desenvolvimento Individual</div>
+    <h1>De PM sênior a<br><span>especialista em CX.</span></h1>
+    <p class="hero-sub">
+      Três meses de desenvolvimento focado — da execução operacional à visão estratégica de experiência do usuário.
+    </p>
+    <div class="hero-meta">
+      <span class="meta-chip">Product Manager · Squadfy</span>
+      <span class="meta-chip">Heineken Group</span>
+      <span class="meta-chip">14 anos de experiência</span>
+      <span class="meta-chip">Modelo 70/20/10</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-pills">
+    <a class="nav-pill" href="#objetivo">Objetivo</a>
+    <a class="nav-pill" href="#pilares">Pilares</a>
+    <a class="nav-pill" href="#metas">Metas</a>
+    <a class="nav-pill" href="#cronograma">Cronograma</a>
+    <a class="nav-pill" href="#recursos">Recursos</a>
+    <a class="nav-pill" href="#contexto">Contexto</a>
+  </div>
+
+  <!-- SEÇÃO: OBJETIVO -->
+  <div class="section" id="objetivo">
+    <div class="section-header">
+      <div class="section-title-group">
+        <div class="section-eyebrow">01 · Visão</div>
+        <h2>Objetivo do PDI</h2>
+      </div>
+      <button class="btn-comment-toggle" onclick="toggleComentarios('objetivo')">💬 Comentar</button>
+    </div>
+    <div class="section-body">
+      <p>
+        Evoluir de PM generalista com foco em execução para <strong>PM Sênior com especialização em CX/CS</strong> — capaz de conduzir discovery estruturado, comunicar decisões com clareza estratégica e construir produtos que criam vínculo real com o usuário.
+      </p>
+      <p>
+        O horizonte mais longo é uma posição de liderança em produto e experiência — Head of CX/Product — com foco em estratégia de plataforma, não em gestão de pessoas como fim.
+      </p>
+      <p>
+        Este PDI cobre julho a setembro de 2026: três meses de fundação. O critério de sucesso não é terminar um curso — é ter pelo menos uma entrega concreta por pilar que possa ser apresentada como evidência de evolução.
+      </p>
+    </div>
+    <div class="comments-area" id="comments-objetivo">
+      <div class="comments-title">💬 Comentários — Objetivo</div>
+      <div class="comment-form">
+        <input type="text" id="autor-objetivo" placeholder="Seu nome" maxlength="60" />
+        <textarea id="texto-objetivo" placeholder="Deixe seu comentário aqui..." rows="3"></textarea>
+        <button class="btn-enviar" onclick="enviarComentario('objetivo')">Enviar</button>
+      </div>
+      <div class="comments-list" id="lista-objetivo">
+        <div class="no-comments">Carregando comentários...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO: PILARES -->
+  <div class="section" id="pilares">
+    <div class="section-header">
+      <div class="section-title-group">
+        <div class="section-eyebrow">02 · Estrutura</div>
+        <h2>4 Pilares de Desenvolvimento</h2>
+      </div>
+      <button class="btn-comment-toggle" onclick="toggleComentarios('pilares')">💬 Comentar</button>
+    </div>
+    <div class="section-body">
+      <div class="pilares-grid">
+        <div class="pilar-card">
+          <div class="pilar-num">01</div>
+          <div class="pilar-name">Discovery & Research</div>
+          <div class="pilar-desc">Estruturar entrevistas, sintetizar insights e documentar decisões baseadas em evidência.</div>
+        </div>
+        <div class="pilar-card">
+          <div class="pilar-num">02</div>
+          <div class="pilar-name">Métricas CX + CS</div>
+          <div class="pilar-desc">Dominar NPS, CSAT, churn e conectar dados de retenção a decisões de produto.</div>
+        </div>
+        <div class="pilar-card">
+          <div class="pilar-num">03</div>
+          <div class="pilar-name">UX Strategy + User Flow</div>
+          <div class="pilar-desc">Mapear jornadas completas, identificar friction points e propor melhorias fundamentadas.</div>
+        </div>
+        <div class="pilar-card">
+          <div class="pilar-num">04</div>
+          <div class="pilar-name">Narrativa Executiva</div>
+          <div class="pilar-desc">Traduzir decisões de produto para linguagem de negócio e construir autoridade externa.</div>
+        </div>
+      </div>
+    </div>
+    <div class="comments-area" id="comments-pilares">
+      <div class="comments-title">💬 Comentários — Pilares</div>
+      <div class="comment-form">
+        <input type="text" id="autor-pilares" placeholder="Seu nome" maxlength="60" />
+        <textarea id="texto-pilares" placeholder="Deixe seu comentário aqui..." rows="3"></textarea>
+        <button class="btn-enviar" onclick="enviarComentario('pilares')">Enviar</button>
+      </div>
+      <div class="comments-list" id="lista-pilares">
+        <div class="no-comments">Carregando comentários...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO: METAS -->
+  <div class="section" id="metas">
+    <div class="section-header">
+      <div class="section-title-group">
+        <div class="section-eyebrow">03 · Resultados</div>
+        <h2>5 Metas SMART</h2>
+      </div>
+      <button class="btn-comment-toggle" onclick="toggleComentarios('metas')">💬 Comentar</button>
+    </div>
+    <div class="section-body">
+      <div class="metas-list">
+
+        <div class="meta-item">
+          <div class="meta-num">01</div>
+          <div class="meta-content">
+            <div class="meta-title">Conduzir 3 entrevistas com usuários do Clube Heineken</div>
+            <div class="meta-desc">Com roteiro, síntese documentada e pelo menos 1 insight que altere uma decisão de roadmap. Aplicado diretamente ao rebranding 2026.</div>
+          </div>
+          <div class="meta-prazo">Jul 2026</div>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-num">02</div>
+          <div class="meta-content">
+            <div class="meta-title">Criar painel de métricas CX para o Clube Heineken</div>
+            <div class="meta-desc">Com NPS, ativação, retenção e ao menos 1 indicador de CS. Fonte de dados real, apresentado em reunião de produto.</div>
+          </div>
+          <div class="meta-prazo">Ago 2026</div>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-num">03</div>
+          <div class="meta-content">
+            <div class="meta-title">Mapear a jornada completa do usuário do Clube</div>
+            <div class="meta-desc">Da aquisição ao resgate, em FigJam. Com friction points identificados e 3 oportunidades de melhoria priorizadas.</div>
+          </div>
+          <div class="meta-prazo">Ago 2026</div>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-num">04</div>
+          <div class="meta-content">
+            <div class="meta-title">Produzir 2 conteúdos externos sobre produto + CX</div>
+            <div class="meta-desc">LinkedIn ou fórum de produto. Baseados em aprendizados reais do contexto Heineken, sem expor dados confidenciais.</div>
+          </div>
+          <div class="meta-prazo">Set 2026</div>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-num">05</div>
+          <div class="meta-content">
+            <div class="meta-title">Apresentar visão estratégica de CX para liderança</div>
+            <div class="meta-desc">Um documento ou apresentação conectando aprendizados do trimestre a uma direção de produto para 2027. Para o gestor e stakeholders Heineken.</div>
+          </div>
+          <div class="meta-prazo">Set 2026</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="comments-area" id="comments-metas">
+      <div class="comments-title">💬 Comentários — Metas</div>
+      <div class="comment-form">
+        <input type="text" id="autor-metas" placeholder="Seu nome" maxlength="60" />
+        <textarea id="texto-metas" placeholder="Deixe seu comentário aqui..." rows="3"></textarea>
+        <button class="btn-enviar" onclick="enviarComentario('metas')">Enviar</button>
+      </div>
+      <div class="comments-list" id="lista-metas">
+        <div class="no-comments">Carregando comentários...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO: CRONOGRAMA -->
+  <div class="section" id="cronograma">
+    <div class="section-header">
+      <div class="section-title-group">
+        <div class="section-eyebrow">04 · Execução</div>
+        <h2>12 Semanas · 1 Entrega por Semana</h2>
+      </div>
+      <button class="btn-comment-toggle" onclick="toggleComentarios('cronograma')">💬 Comentar</button>
+    </div>
+    <div class="section-body">
+      <div class="semanas-list">
+
+        <div class="mes-header">Julho 2026 — Fundação</div>
+
+        <div class="semana-item">
+          <div class="semana-label">Sem 1</div>
+          <div class="semana-entrega">Roteiro de entrevista com usuário — 1ª versão revisada com designer</div>
+          <div class="semana-pilar pilar-tag-1">Discovery</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 2</div>
+          <div class="semana-entrega">1ª entrevista realizada e síntese documentada</div>
+          <div class="semana-pilar pilar-tag-1">Discovery</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 3</div>
+          <div class="semana-entrega">2ª e 3ª entrevistas + padrões identificados</div>
+          <div class="semana-pilar pilar-tag-1">Discovery</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 4</div>
+          <div class="semana-entrega">1 insight aplicado a uma decisão de roadmap — documentado no Notion</div>
+          <div class="semana-pilar pilar-tag-1">Discovery</div>
+        </div>
+
+        <div class="mes-header">Agosto 2026 — Plataforma + Discovery</div>
+
+        <div class="semana-item">
+          <div class="semana-label">Sem 5</div>
+          <div class="semana-entrega">Mapeamento de métricas disponíveis + gaps identificados</div>
+          <div class="semana-pilar pilar-tag-2">Métricas</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 6</div>
+          <div class="semana-entrega">Painel de métricas CX — 1ª versão (NPS, ativação, retenção)</div>
+          <div class="semana-pilar pilar-tag-2">Métricas</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 7</div>
+          <div class="semana-entrega">Jornada do usuário mapeada no FigJam — aquisição até resgate</div>
+          <div class="semana-pilar pilar-tag-3">UX Strategy</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 8</div>
+          <div class="semana-entrega">3 friction points identificados + oportunidades priorizadas</div>
+          <div class="semana-pilar pilar-tag-3">UX Strategy</div>
+        </div>
+
+        <div class="mes-header">Setembro 2026 — Narrativa + Check Senior PM</div>
+
+        <div class="semana-item">
+          <div class="semana-label">Sem 9</div>
+          <div class="semana-entrega">Painel de métricas apresentado em reunião de produto</div>
+          <div class="semana-pilar pilar-tag-2">Métricas</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 10</div>
+          <div class="semana-entrega">1º conteúdo externo publicado (LinkedIn)</div>
+          <div class="semana-pilar pilar-tag-4">Narrativa</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 11</div>
+          <div class="semana-entrega">2º conteúdo externo + rascunho da visão estratégica CX 2027</div>
+          <div class="semana-pilar pilar-tag-4">Narrativa</div>
+        </div>
+        <div class="semana-item">
+          <div class="semana-label">Sem 12</div>
+          <div class="semana-entrega">Apresentação da visão CX 2027 para gestor e stakeholders Heineken</div>
+          <div class="semana-pilar pilar-tag-4">Narrativa</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="comments-area" id="comments-cronograma">
+      <div class="comments-title">💬 Comentários — Cronograma</div>
+      <div class="comment-form">
+        <input type="text" id="autor-cronograma" placeholder="Seu nome" maxlength="60" />
+        <textarea id="texto-cronograma" placeholder="Deixe seu comentário aqui..." rows="3"></textarea>
+        <button class="btn-enviar" onclick="enviarComentario('cronograma')">Enviar</button>
+      </div>
+      <div class="comments-list" id="lista-cronograma">
+        <div class="no-comments">Carregando comentários...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO: RECURSOS -->
+  <div class="section" id="recursos">
+    <div class="section-header">
+      <div class="section-title-group">
+        <div class="section-eyebrow">05 · Aprendizado</div>
+        <h2>Recursos (70/20/10)</h2>
+      </div>
+      <button class="btn-comment-toggle" onclick="toggleComentarios('recursos')">💬 Comentar</button>
+    </div>
+    <div class="section-body">
+      <p style="margin-bottom:20px; font-size:13px; color: var(--muted);">
+        <strong style="color:var(--text)">70%</strong> prática no trabalho real ·
+        <strong style="color:var(--text)">20%</strong> feedback e mentoria ·
+        <strong style="color:var(--text)">10%</strong> teoria e cursos
+      </p>
+      <div class="recursos-grid">
+        <div class="recurso-card">
+          <div class="recurso-tipo">Curso · Tera</div>
+          <div class="recurso-nome">Discovery & Research</div>
+          <div class="recurso-detalhe">Acesso vitalício — prioridade Julho</div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-tipo">Curso · Tera</div>
+          <div class="recurso-nome">Product Leadership</div>
+          <div class="recurso-detalhe">Já concluído — revisitar seções de CX</div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-tipo">Livro · PT-BR</div>
+          <div class="recurso-nome">Hooked</div>
+          <div class="recurso-detalhe">Nir Eyal — engajamento e hábito aplicado a fidelização</div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-tipo">Livro · PT-BR</div>
+          <div class="recurso-nome">Inspired</div>
+          <div class="recurso-detalhe">Marty Cagan — PM orientado a impacto e experiência</div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-tipo">Comunidade</div>
+          <div class="recurso-nome">PM3</div>
+          <div class="recurso-detalhe">Conteúdo e comunidade de produto em português</div>
+        </div>
+        <div class="recurso-card">
+          <div class="recurso-tipo">Prática</div>
+          <div class="recurso-nome">Rebranding Clube Heineken</div>
+          <div class="recurso-detalhe">Projeto real como laboratório de discovery e CX</div>
+        </div>
+      </div>
+    </div>
+    <div class="comments-area" id="comments-recursos">
+      <div class="comments-title">💬 Comentários — Recursos</div>
+      <div class="comment-form">
+        <input type="text" id="autor-recursos" placeholder="Seu nome" maxlength="60" />
+        <textarea id="texto-recursos" placeholder="Deixe seu comentário aqui..." rows="3"></textarea>
+        <button class="btn-enviar" onclick="enviarComentario('recursos')">Enviar</button>
+      </div>
+      <div class="comments-list" id="lista-recursos">
+        <div class="no-comments">Carregando comentários...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO: CONTEXTO -->
+  <div class="section" id="contexto">
+    <div class="section-header">
+      <div class="section-title-group">
+        <div class="section-eyebrow">06 · Background</div>
+        <h2>Contexto Profissional</h2>
+      </div>
+      <button class="btn-comment-toggle" onclick="toggleComentarios('contexto')">💬 Comentar</button>
+    </div>
+    <div class="section-body">
+      <p>
+        14 anos de experiência profissional, 3,5 anos como PM em contexto enterprise. A transição para produto foi uma formalização — as habilidades já eram praticadas em e-commerce, incluindo implementação de ERP e desenvolvimento de site.
+      </p>
+      <p>
+        Portfólio atual: <strong>Clube Heineken</strong> (fidelização B2C, construído do zero), <strong>HeiShop</strong> (hub de promoções, 4 campanhas em 2026), <strong>My Promo</strong> (plataforma multi-marca, descontinuada por decisão estratégica do grupo — não por performance), <strong>Heineken Masters</strong> (incentivo B2B para bares e restaurantes), <strong>bar.code</strong> (inovação com QR code em embalagem física, lançado nas latinhas Amstel 269ml).
+      </p>
+      <p>
+        O movimento estratégico agora é sair da execução generalista e construir autoridade em CX e fidelização — onde o portfólio já tem base sólida e onde o mercado cada vez mais busca especialistas.
+      </p>
+    </div>
+    <div class="comments-area" id="comments-contexto">
+      <div class="comments-title">💬 Comentários — Contexto</div>
+      <div class="comment-form">
+        <input type="text" id="autor-contexto" placeholder="Seu nome" maxlength="60" />
+        <textarea id="texto-contexto" placeholder="Deixe seu comentário aqui..." rows="3"></textarea>
+        <button class="btn-enviar" onclick="enviarComentario('contexto')">Enviar</button>
+      </div>
+      <div class="comments-list" id="lista-contexto">
+        <div class="no-comments">Carregando comentários...</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="footer">
+    PDI · Monica Magalhães · Squadfy · Heineken Group · Jul–Set 2026
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // ── Toggle comentários ──
+  function toggleComentarios(secao) {
+    var area = document.getElementById('comments-' + secao);
+    var isOpen = area.classList.contains('open');
+    area.classList.toggle('open');
+    if (!isOpen) carregarComentariosSecao(secao);
+  }
+
+  // ── Enviar comentário ──
+  function enviarComentario(secao) {
+    var autor = document.getElementById('autor-' + secao).value.trim();
+    var texto = document.getElementById('texto-' + secao).value.trim();
+
+    if (!autor || !texto) {
+      mostrarToast('Preencha seu nome e o comentário.', true);
+      return;
+    }
+
+    var btn = document.querySelector('#comments-' + secao + ' .btn-enviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    google.script.run
+      .withSuccessHandler(function(res) {
+        btn.disabled = false;
+        btn.textContent = 'Enviar';
+        if (res.sucesso) {
+          document.getElementById('texto-' + secao).value = '';
+          mostrarToast('Comentário salvo!');
+          carregarComentariosSecao(secao);
+        } else {
+          mostrarToast('Erro ao salvar.', true);
+        }
+      })
+      .withFailureHandler(function() {
+        btn.disabled = false;
+        btn.textContent = 'Enviar';
+        mostrarToast('Erro de conexão.', true);
+      })
+      .salvarComentario(secao, autor, texto);
+  }
+
+  // ── Carregar comentários de uma seção ──
+  function carregarComentariosSecao(secao) {
+    var lista = document.getElementById('lista-' + secao);
+    lista.innerHTML = '<div class="no-comments">Carregando...</div>';
+
+    google.script.run
+      .withSuccessHandler(function(comentarios) {
+        renderComentarios(lista, comentarios);
+      })
+      .withFailureHandler(function() {
+        lista.innerHTML = '<div class="no-comments">Erro ao carregar.</div>';
+      })
+      .carregarComentarios(secao);
+  }
+
+  // ── Renderizar lista ──
+  function renderComentarios(container, comentarios) {
+    if (!comentarios || comentarios.length === 0) {
+      container.innerHTML = '<div class="no-comments">Nenhum comentário ainda.</div>';
+      return;
+    }
+
+    var html = '';
+    comentarios.forEach(function(c) {
+      html += '<div class="comment-bubble">' +
+        '<div class="comment-meta">' +
+        '<span class="comment-autor">' + escapeHtml(c.autor) + '</span>' +
+        '<span class="comment-data">' + c.data + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  // ── Escape HTML ──
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // ── Toast ──
+  function mostrarToast(msg, erro) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (erro ? ' error' : '');
+    setTimeout(function() { t.className = 'toast'; }, 3000);
+  }
+
+  // ── Botão atualizar (re-deploy) ──
+  function confirmarAtualizacao() {
+    if (confirm('Publicar versão atualizada do PDI?\n\nIsso fará o re-deploy do web app com as últimas alterações do código.')) {
+      var btn = document.getElementById('btnDeploy');
+      btn.disabled = true;
+      btn.textContent = 'Atualizando...';
+
+      google.script.run
+        .withSuccessHandler(function() {
+          btn.disabled = false;
+          btn.textContent = '↻ Atualizar';
+          mostrarToast('PDI atualizado com sucesso!');
+        })
+        .withFailureHandler(function() {
+          btn.disabled = false;
+          btn.textContent = '↻ Atualizar';
+          mostrarToast('Erro ao atualizar.', true);
+        })
+        .redesployWebApp();
+    }
+  }
+</script>
+
+</body>
+</html>
