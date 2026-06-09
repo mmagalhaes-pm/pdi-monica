@@ -15,7 +15,6 @@
     --accent2:   #7c5cfc;
     --text:      #e8e8f0;
     --muted:     #6b6b80;
-    --danger:    #ff5c5c;
     --warn:      #f5a623;
     --tag-bg:    rgba(0,200,150,0.1);
   }
@@ -30,7 +29,6 @@
     line-height: 1.7;
   }
 
-  /* ── TOP BAR ── */
   .topbar {
     position: sticky;
     top: 0;
@@ -46,11 +44,7 @@
     gap: 16px;
   }
 
-  .topbar-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .topbar-left { display: flex; align-items: center; gap: 12px; }
 
   .topbar-logo {
     font-family: 'Space Grotesk', sans-serif;
@@ -62,17 +56,9 @@
 
   .topbar-sep { color: var(--border); }
 
-  .topbar-title {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 400;
-  }
+  .topbar-title { font-size: 13px; color: var(--muted); font-weight: 400; }
 
-  .topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .topbar-right { display: flex; align-items: center; gap: 10px; }
 
   .badge-period {
     font-size: 11px;
@@ -85,36 +71,30 @@
     letter-spacing: 0.5px;
   }
 
-  .btn-deploy {
-    display: flex;
+  .btn-feedback {
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--accent);
-    color: #0d0d0f;
+    background: transparent;
+    border: 1px solid var(--accent2);
+    color: var(--accent2);
     font-weight: 700;
     font-size: 12px;
-    border: none;
-    border-radius: 6px;
+    text-decoration: none;
     padding: 7px 14px;
-    cursor: pointer;
-    letter-spacing: 0.3px;
+    border-radius: 6px;
     transition: opacity 0.15s;
   }
 
-  .btn-deploy:hover { opacity: 0.85; }
-  .btn-deploy:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-feedback:hover { opacity: 0.8; }
 
-  /* ── LAYOUT ── */
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 64px 32px 100px;
   }
 
-  /* ── HERO ── */
-  .hero {
-    margin-bottom: 72px;
-  }
+  .hero { margin-bottom: 72px; }
 
   .hero-eyebrow {
     font-size: 11px;
@@ -135,9 +115,7 @@
     margin-bottom: 16px;
   }
 
-  .hero h1 span {
-    color: var(--accent);
-  }
+  .hero h1 span { color: var(--accent); }
 
   .hero-sub {
     font-size: 16px;
@@ -146,12 +124,7 @@
     line-height: 1.6;
   }
 
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 24px;
-  }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
 
   .meta-chip {
     font-size: 12px;
@@ -163,7 +136,6 @@
     border-radius: 20px;
   }
 
-  /* ── NAV ── */
   .nav-pills {
     display: flex;
     flex-wrap: wrap;
@@ -186,16 +158,9 @@
     text-decoration: none;
   }
 
-  .nav-pill:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .nav-pill:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* ── SEÇÕES ── */
-  .section {
-    margin-bottom: 72px;
-    scroll-margin-top: 72px;
-  }
+  .section { margin-bottom: 72px; scroll-margin-top: 72px; }
 
   .section-header {
     display: flex;
@@ -204,8 +169,6 @@
     margin-bottom: 20px;
     gap: 16px;
   }
-
-  .section-title-group {}
 
   .section-eyebrow {
     font-size: 10px;
@@ -224,25 +187,6 @@
     color: var(--text);
   }
 
-  .btn-comment-toggle {
-    flex-shrink: 0;
-    font-size: 11px;
-    font-weight: 600;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 5px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
-  }
-
-  .btn-comment-toggle:hover {
-    border-color: var(--accent2);
-    color: var(--accent2);
-  }
-
   .section-body {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -259,7 +203,6 @@
 
   .section-body p:last-child { margin-bottom: 0; }
 
-  /* ── PILARES ── */
   .pilares-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -292,25 +235,10 @@
     margin-bottom: 8px;
   }
 
-  .pilar-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
+  .pilar-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .pilar-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-  .pilar-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* ── METAS ── */
-  .metas-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .metas-list { display: flex; flex-direction: column; gap: 12px; }
 
   .meta-item {
     background: var(--bg);
@@ -331,20 +259,8 @@
     line-height: 1.2;
   }
 
-  .meta-content {}
-
-  .meta-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .meta-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
+  .meta-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .meta-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
   .meta-prazo {
     font-size: 11px;
@@ -357,12 +273,7 @@
     white-space: nowrap;
   }
 
-  /* ── CRONOGRAMA ── */
-  .semanas-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .semanas-list { display: flex; flex-direction: column; gap: 8px; }
 
   .semana-item {
     display: grid;
@@ -375,17 +286,8 @@
     padding: 14px 18px;
   }
 
-  .semana-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-  }
-
-  .semana-entrega {
-    font-size: 13px;
-    color: var(--text);
-  }
+  .semana-label { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.5px; }
+  .semana-entrega { font-size: 13px; color: var(--text); }
 
   .semana-pilar {
     font-size: 10px;
@@ -416,7 +318,6 @@
 
   .mes-header:first-child { margin-top: 0; }
 
-  /* ── RECURSOS ── */
   .recursos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -439,168 +340,21 @@
     margin-bottom: 8px;
   }
 
-  .recurso-nome {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
+  .recurso-nome { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .recurso-detalhe { font-size: 12px; color: var(--muted); }
 
-  .recurso-detalhe {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  /* ── COMENTÁRIOS ── */
-  .comments-area {
-    display: none;
-    margin-top: 16px;
-    background: rgba(124,92,252,0.05);
-    border: 1px solid rgba(124,92,252,0.2);
-    border-radius: 10px;
-    padding: 20px;
-  }
-
-  .comments-area.open { display: block; }
-
-  .comments-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent2);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .comment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
-  .comment-form input,
-  .comment-form textarea {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    border-radius: 6px;
-    padding: 10px 14px;
-    outline: none;
-    transition: border-color 0.15s;
-    resize: vertical;
-  }
-
-  .comment-form input:focus,
-  .comment-form textarea:focus {
-    border-color: var(--accent2);
-  }
-
-  .comment-form input::placeholder,
-  .comment-form textarea::placeholder {
-    color: var(--muted);
-  }
-
-  .btn-enviar {
-    align-self: flex-end;
-    background: var(--accent2);
-    color: white;
-    font-weight: 700;
-    font-size: 12px;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 18px;
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
-
-  .btn-enviar:hover { opacity: 0.85; }
-  .btn-enviar:disabled { opacity: 0.4; cursor: not-allowed; }
-
-  .comments-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .comment-bubble {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-  }
-
-  .comment-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
-
-  .comment-autor {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent2);
-  }
-
-  .comment-data {
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .comment-texto {
-    font-size: 13px;
-    color: #c8c8d8;
-    line-height: 1.5;
-  }
-
-  .no-comments {
-    font-size: 12px;
-    color: var(--muted);
-    text-align: center;
-    padding: 12px 0;
-  }
-
-  /* ── TOAST ── */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: var(--surface);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 12px 20px;
-    border-radius: 8px;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: all 0.25s;
-    z-index: 999;
-    pointer-events: none;
-  }
-
-  .toast.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .toast.error {
-    border-color: var(--danger);
-    color: var(--danger);
-  }
-
-  /* ── DIVISOR ── */
   .divider {
     border: none;
     border-top: 1px solid var(--border);
     margin: 48px 0;
   }
 
-  /* ── FOOTER ── */
   .footer {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
     font-size: 12px;
     color: var(--muted);
     padding-top: 32px;
@@ -619,7 +373,6 @@
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-left">
     <span class="topbar-logo">PDI</span>
@@ -628,25 +381,16 @@
   </div>
   <div class="topbar-right">
     <span class="badge-period">Jul – Set 2026</span>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHtS8ouRUqLYaUBCZbQujsYcs5JyOnvHs7dCWk79FYQyF6-w/viewform" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid var(--accent2); color:var(--accent2); font-weight:700; font-size:12px; text-decoration:none; padding:7px 14px; border-radius:6px; transition:opacity 0.15s;">
-      💬 Feedback
-    </a>
-    <button class="btn-deploy" id="btnDeploy" onclick="confirmarAtualizacao()">
-      ↻ Atualizar
-    </button>
+    <a class="btn-feedback" href="https://docs.google.com/forms/d/e/1FAIpQLSfHtS8ouRUqLYaUBCZbQujsYcs5JyOnvHs7dCWk79FYQyF6-w/viewform" target="_blank">💬 Feedback</a>
   </div>
 </div>
 
-<!-- CONTAINER -->
 <div class="container">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-eyebrow">Plano de Desenvolvimento Individual</div>
-    <h1>De PM sênior a<br><span>especialista em CX.</span></h1>
-    <p class="hero-sub">
-      Três meses de desenvolvimento focado — da execução operacional à visão estratégica de experiência do usuário.
-    </p>
+    <h1>De PM Pleno para<br><span>Sênior Especialista CX + CS.</span></h1>
+    <p class="hero-sub">Três meses de desenvolvimento focado — da execução operacional à visão estratégica de experiência do usuário.</p>
     <div class="hero-meta">
       <span class="meta-chip">Product Manager · Squadfy</span>
       <span class="meta-chip">Heineken Group</span>
@@ -655,7 +399,6 @@
     </div>
   </div>
 
-  <!-- NAV -->
   <div class="nav-pills">
     <a class="nav-pill" href="#objetivo">Objetivo</a>
     <a class="nav-pill" href="#pilares">Pilares</a>
@@ -665,32 +408,25 @@
     <a class="nav-pill" href="#contexto">Contexto</a>
   </div>
 
-  <!-- SEÇÃO: OBJETIVO -->
+  <!-- OBJETIVO -->
   <div class="section" id="objetivo">
     <div class="section-header">
-      <div class="section-title-group">
+      <div>
         <div class="section-eyebrow">01 · Visão</div>
         <h2>Objetivo do PDI</h2>
       </div>
     </div>
     <div class="section-body">
-      <p>
-        Evoluir de PM generalista com foco em execução para <strong>PM Sênior com especialização em CX/CS</strong> — capaz de conduzir discovery estruturado, comunicar decisões com clareza estratégica e construir produtos que criam vínculo real com o usuário.
-      </p>
-      <p>
-        O horizonte mais longo é uma posição de liderança em produto e experiência — Head of CX/Product — com foco em estratégia de plataforma, não em gestão de pessoas como fim.
-      </p>
-      <p>
-        Este PDI cobre julho a setembro de 2026: três meses de fundação. O critério de sucesso não é terminar um curso — é ter pelo menos uma entrega concreta por pilar que possa ser apresentada como evidência de evolução.
-      </p>
-    </div></div>
-  </div>
+      <p>Evoluir de PM generalista com foco em execução para <strong>PM Sênior com especialização em CX/CS</strong> — capaz de conduzir discovery estruturado, comunicar decisões com clareza estratégica e construir produtos que criam vínculo real com o usuário.</p>
+      <p>O horizonte mais longo é uma posição de liderança em produto e experiência — Head of CX/Product — com foco em estratégia de plataforma, não em gestão de pessoas como fim.</p>
+      <p>Este PDI cobre julho a setembro de 2026: três meses de fundação. O critério de sucesso não é terminar um curso — é ter pelo menos uma entrega concreta por pilar que possa ser apresentada como evidência de evolução.</p>
+    </div>
   </div>
 
-  <!-- SEÇÃO: PILARES -->
+  <!-- PILARES -->
   <div class="section" id="pilares">
     <div class="section-header">
-      <div class="section-title-group">
+      <div>
         <div class="section-eyebrow">02 · Estrutura</div>
         <h2>4 Pilares de Desenvolvimento</h2>
       </div>
@@ -718,21 +454,19 @@
           <div class="pilar-desc">Traduzir decisões de produto para linguagem de negócio e construir autoridade externa.</div>
         </div>
       </div>
-    </div></div>
-  </div>
+    </div>
   </div>
 
-  <!-- SEÇÃO: METAS -->
+  <!-- METAS -->
   <div class="section" id="metas">
     <div class="section-header">
-      <div class="section-title-group">
+      <div>
         <div class="section-eyebrow">03 · Resultados</div>
         <h2>5 Metas SMART</h2>
       </div>
     </div>
     <div class="section-body">
       <div class="metas-list">
-
         <div class="meta-item">
           <div class="meta-num">01</div>
           <div class="meta-content">
@@ -741,7 +475,6 @@
           </div>
           <div class="meta-prazo">Jul 2026</div>
         </div>
-
         <div class="meta-item">
           <div class="meta-num">02</div>
           <div class="meta-content">
@@ -750,7 +483,6 @@
           </div>
           <div class="meta-prazo">Ago 2026</div>
         </div>
-
         <div class="meta-item">
           <div class="meta-num">03</div>
           <div class="meta-content">
@@ -759,7 +491,6 @@
           </div>
           <div class="meta-prazo">Ago 2026</div>
         </div>
-
         <div class="meta-item">
           <div class="meta-num">04</div>
           <div class="meta-content">
@@ -768,7 +499,6 @@
           </div>
           <div class="meta-prazo">Set 2026</div>
         </div>
-
         <div class="meta-item">
           <div class="meta-num">05</div>
           <div class="meta-content">
@@ -777,25 +507,21 @@
           </div>
           <div class="meta-prazo">Set 2026</div>
         </div>
-
       </div>
-    </div></div>
-  </div>
+    </div>
   </div>
 
-  <!-- SEÇÃO: CRONOGRAMA -->
+  <!-- CRONOGRAMA -->
   <div class="section" id="cronograma">
     <div class="section-header">
-      <div class="section-title-group">
+      <div>
         <div class="section-eyebrow">04 · Execução</div>
         <h2>12 Semanas · 1 Entrega por Semana</h2>
       </div>
     </div>
     <div class="section-body">
       <div class="semanas-list">
-
         <div class="mes-header">Julho 2026 — Fundação</div>
-
         <div class="semana-item">
           <div class="semana-label">Sem 1</div>
           <div class="semana-entrega">Roteiro de entrevista com usuário — 1ª versão revisada com designer</div>
@@ -816,9 +542,7 @@
           <div class="semana-entrega">1 insight aplicado a uma decisão de roadmap — documentado no Notion</div>
           <div class="semana-pilar pilar-tag-1">Discovery</div>
         </div>
-
         <div class="mes-header">Agosto 2026 — Plataforma + Discovery</div>
-
         <div class="semana-item">
           <div class="semana-label">Sem 5</div>
           <div class="semana-entrega">Mapeamento de métricas disponíveis + gaps identificados</div>
@@ -839,9 +563,7 @@
           <div class="semana-entrega">3 friction points identificados + oportunidades priorizadas</div>
           <div class="semana-pilar pilar-tag-3">UX Strategy</div>
         </div>
-
         <div class="mes-header">Setembro 2026 — Narrativa + Check Senior PM</div>
-
         <div class="semana-item">
           <div class="semana-label">Sem 9</div>
           <div class="semana-entrega">Painel de métricas apresentado em reunião de produto</div>
@@ -862,16 +584,14 @@
           <div class="semana-entrega">Apresentação da visão CX 2027 para gestor e stakeholders Heineken</div>
           <div class="semana-pilar pilar-tag-4">Narrativa</div>
         </div>
-
       </div>
-    </div></div>
-  </div>
+    </div>
   </div>
 
-  <!-- SEÇÃO: RECURSOS -->
+  <!-- RECURSOS -->
   <div class="section" id="recursos">
     <div class="section-header">
-      <div class="section-title-group">
+      <div>
         <div class="section-eyebrow">05 · Aprendizado</div>
         <h2>Recursos (70/20/10)</h2>
       </div>
@@ -914,71 +634,32 @@
           <div class="recurso-detalhe">Projeto real como laboratório de discovery e CX</div>
         </div>
       </div>
-    </div></div>
-  </div>
+    </div>
   </div>
 
-  <!-- SEÇÃO: CONTEXTO -->
+  <!-- CONTEXTO -->
   <div class="section" id="contexto">
     <div class="section-header">
-      <div class="section-title-group">
+      <div>
         <div class="section-eyebrow">06 · Background</div>
         <h2>Contexto Profissional</h2>
       </div>
     </div>
     <div class="section-body">
-      <p>
-        14 anos de experiência profissional, 3,5 anos como PM em contexto enterprise. A transição para produto foi uma formalização — as habilidades já eram praticadas em e-commerce, incluindo implementação de ERP e desenvolvimento de site.
-      </p>
-      <p>
-        Portfólio atual: <strong>Clube Heineken</strong> (fidelização B2C, construído do zero), <strong>HeiShop</strong> (hub de promoções, 4 campanhas em 2026), <strong>My Promo</strong> (plataforma multi-marca, descontinuada por decisão estratégica do grupo — não por performance), <strong>Heineken Masters</strong> (incentivo B2B para bares e restaurantes), <strong>bar.code</strong> (inovação com QR code em embalagem física, lançado nas latinhas Amstel 269ml).
-      </p>
-      <p>
-        O movimento estratégico agora é sair da execução generalista e construir autoridade em CX e fidelização — onde o portfólio já tem base sólida e onde o mercado cada vez mais busca especialistas.
-      </p>
-    </div></div>
-  </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- COMENTÁRIOS -->
-  <div class="section" id="comentarios">
-    <div class="section-body" style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
-      <div>
-        <div style="font-size:13px; font-weight:700; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">💬 Feedback</div>
-        <div style="font-size:15px; color:#c8c8d8;">Tem algum comentário sobre o PDI? Clica no botão e deixa sua mensagem.</div>
-      </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHtS8ouRUqLYaUBCZbQujsYcs5JyOnvHs7dCWk79FYQyF6-w/viewform" target="_blank" style="flex-shrink:0; display:inline-flex; align-items:center; gap:8px; background:var(--accent2); color:white; font-weight:700; font-size:14px; text-decoration:none; padding:12px 24px; border-radius:8px; transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-        💬 Comentar
-      </a>
+      <p>14 anos de experiência profissional, 3,5 anos como PM em contexto enterprise. A transição para produto foi uma formalização — as habilidades já eram praticadas em e-commerce, incluindo implementação de ERP e desenvolvimento de site.</p>
+      <p>Portfólio atual: <strong>Clube Heineken</strong> (fidelização B2C, construído do zero), <strong>HeiShop</strong> (hub de promoções, 4 campanhas em 2026), <strong>My Promo</strong> (plataforma multi-marca, descontinuada por decisão estratégica do grupo — não por performance), <strong>Heineken Masters</strong> (incentivo B2B para bares e restaurantes), <strong>bar.code</strong> (inovação com QR code em embalagem física, lançado nas latinhas Amstel 269ml).</p>
+      <p>O movimento estratégico agora é sair da execução generalista e construir autoridade em CX e fidelização — onde o portfólio já tem base sólida e onde o mercado cada vez mais busca especialistas.</p>
     </div>
   </div>
 
   <hr class="divider">
 
-  <div class="footer" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+  <div class="footer">
     <span>PDI · Monica Magalhães · Squadfy · Heineken Group · Jul–Set 2026</span>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHtS8ouRUqLYaUBCZbQujsYcs5JyOnvHs7dCWk79FYQyF6-w/viewform" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid var(--accent2); color:var(--accent2); font-weight:700; font-size:12px; text-decoration:none; padding:7px 14px; border-radius:6px;">
-      💬 Feedback
-    </a>
+    <a class="btn-feedback" href="https://docs.google.com/forms/d/e/1FAIpQLSfHtS8ouRUqLYaUBCZbQujsYcs5JyOnvHs7dCWk79FYQyF6-w/viewform" target="_blank">💬 Feedback</a>
   </div>
 
 </div>
 
-<script>
-  // navega para o form quando clica em Comentar
-  function toggleComentarios(secao) {
-    document.getElementById('comentarios').scrollIntoView({ behavior: 'smooth' });
-  }
-
- 
-</script>
-
-
-<script>
-  function toggleComentarios(secao) {}
-  function confirmarAtualizacao() {}
-</script>
 </body>
 </html>
